@@ -26,7 +26,7 @@ jobs:
 
       - name: Rodar testes e gerar coverage
         run: |
-          pytest --cov=. --cov-report=xml
+          PYTHONPATH=$(pwd) pytest --cov=. --cov-report=xml
 
       - name: SonarQube Scan
         uses: SonarSource/sonarcloud-github-action@v2
