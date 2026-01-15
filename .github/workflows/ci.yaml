@@ -22,11 +22,14 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install pytest pytest-cov
+
 
       - name: Rodar testes e gerar coverage
         run: |
-          PYTHONPATH=$(pwd) pytest --cov=. --cov-report=xml
+          python -m pytest --cov=. --cov-report=xml
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+
 
       - name: SonarQube Scan
         uses: SonarSource/sonarcloud-github-action@v2
