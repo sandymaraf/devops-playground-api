@@ -24,6 +24,7 @@ jobs:
           pip install -r requirements.txt
           pip install -e .
 
+
       - name: Rodar testes e gerar coverage
         run: python -m pytest --cov=. --cov-report=xml
         env:
