@@ -23,11 +23,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-
       - name: Rodar testes e gerar coverage
         run: |
-          PYTHONPATH=$(pwd) python -m pytest --cov=. --cov-report=xml  
-
+          cd $GITHUB_WORKSPACE   # garante que estamos na raiz do projeto
+          PYTHONPATH=$GITHUB_WORKSPACE python -m pytest --cov=. --cov-report=xml
 
       - name: SonarQube Scan
         uses: SonarSource/sonarcloud-github-action@v2
