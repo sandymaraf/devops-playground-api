@@ -1,0 +1,16 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+
+# Git
+.git
+
+# Environment variables
+.env
+
+# Coverage reports
+coverage/
+*.coverage
+htmlcov/
