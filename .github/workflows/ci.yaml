@@ -24,9 +24,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Rodar testes e gerar coverage
-        run: |
-          cd $GITHUB_WORKSPACE/devops-playground-api
-          python -m pytest --cov=. --cov-report=xml
+        run: python -m pytest --cov=. --cov-report=xml
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+
 
       - name: SonarQube Scan
         uses: SonarSource/sonarcloud-github-action@v2
