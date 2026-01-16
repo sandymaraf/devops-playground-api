@@ -29,13 +29,14 @@ jobs:
         env:
           PYTHONPATH: ${{ github.workspace }}
 
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
-          projectBaseDir: .
+        projectBaseDir: .
 
       - name: Build da imagem Docker
         run: docker build -t devops-playground-api .
