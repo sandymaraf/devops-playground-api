@@ -26,13 +26,16 @@ jobs:
 
       - name: Rodar testes e gerar coverage
         run: python -m pytest --cov=. --cov-report=xml
+        env:
+          PYTHONPATH: ${{ github.workspace }}
 
-      - name: SonarQube Scan
+      - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
-        with:
-          projectBaseDir: .
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          projectBaseDir: .
 
       - name: Build da imagem Docker
         run: docker build -t devops-playground-api .
